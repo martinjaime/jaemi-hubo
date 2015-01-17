@@ -9439,8 +9439,8 @@ void Motion_OnGestureMrtnAltArmPoint(int T, char MotionStop,unsigned int MotionN
 			FTN_half_1_cos(-1.0f,time,    400,100,0,0,&result2[LEB]);
 			res[LEB] = (float)(45.*(result1[LEB] + result2[LEB]));
 			
-			FTN_half_1_cos( 1.0f,time,    100,100,0,0,&result1[REB]);
-			FTN_half_1_cos(-1.0f,time,    400,100,0,0,&result2[REB]);
+			FTN_half_1_cos( 1.0f,time,    500,100,0,0,&result1[REB]);
+			FTN_half_1_cos(-1.0f,time,    800,100,0,0,&result2[REB]);
 			res[REB] = (float)(-45.*(result1[REB] + result2[REB]));
 
 			/*
