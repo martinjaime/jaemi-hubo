@@ -4443,7 +4443,7 @@ void CGesture::OnGestureMrtnAltArmPoint()
 {
 	int		JointIndex;
 	int		t;
-	int		T;
+	int		T = 900;
 	
 	int		MotionNo;
 	MotionNo = 47;
@@ -4476,9 +4476,9 @@ void CGesture::OnGestureMrtnAltArmPoint()
 			}
 		}
 		theApp.Home(T);
-		
-		theApp.m_pSharedMemory->MotionLength[MotionNo] = T;
 		*/
+		theApp.m_pSharedMemory->MotionLength[MotionNo] = T;
+		
 		theApp.m_pSharedMemory->MotionFlagALL = 1;
 		theApp.m_pSharedMemory->MotionFlag[MotionNo] = TRUE;
 		//theApp.m_pSharedMemory->PROFTime[11] = 0;

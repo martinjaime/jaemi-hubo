@@ -9441,7 +9441,7 @@ void Motion_OnGestureMrtnAltArmPoint(int T, char MotionStop,unsigned int MotionN
 			
 			FTN_half_1_cos( 1.0f,time,    100,100,0,0,&result1[REB]);
 			FTN_half_1_cos(-1.0f,time,    400,100,0,0,&result2[REB]);
-			res[REB] = (float)(-45.*(result1[REB] + result2[REB]));
+			res[REB] = (float)(45.*(result1[REB] + result2[REB]));
 
 			/*
 			// RSP from 0 to 90 then back to 0 
@@ -9490,7 +9490,6 @@ void Motion_OnGestureMrtnAltArmPoint(int T, char MotionStop,unsigned int MotionN
 			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[LWY]);
 			res[LWY] = (float)(35.*(result1[LWY]+result2[LWY]));
 			*/
-
 
 			/*
 			
