@@ -9377,6 +9377,7 @@ void Motion_OnGestureMrtnAltArmPoint(int T, char MotionStop,unsigned int MotionN
 	float	res[NumOfMotionJoint];
 	float	result1[NumOfMotionJoint];
 	float	result2[NumOfMotionJoint];
+	float	result3[NumOfMotionJoint];		// Martin added this for testing relative vs absolute motion.
 	float	LOCALresultMTRAng[TOTAL_MTR_NUM];
 
 	static float LOCALoldJntAng[TOTAL_MTR_NUM];
@@ -9424,81 +9425,23 @@ void Motion_OnGestureMrtnAltArmPoint(int T, char MotionStop,unsigned int MotionN
 			// user modified code /////////////////////////////////////////////////////////
 			
 			/*
-			FTN_half_1_cos( 1.0f,time,    0,100,0,0,&result1[0]);
-			FTN_half_1_cos(-1.0f,time,100,100,0,0,&result2[0]);
-			res[0] = (float)(20.*(result1[0]+result2[0]));
-			
-			FTN_half_1_cos(1.0f,time,    200,100,0,0,&result1[1]);
-			FTN_half_1_cos(-1.0f,time,300,100,0,0,&result2[1]);
-			res[1] = (float)(-20.*(result1[1]+result2[1]));
-			*/
-			
-			
 			// LEB from 0 to 45 then back to 0 
 			FTN_half_1_cos( 1.0f,time,    100, 100,0,0,&result1[LEB]);
 			FTN_half_1_cos(-1.0f,time,    400,100,0,0,&result2[LEB]);
 			res[LEB] = (float)(45.*(result1[LEB] + result2[LEB]));
 			
-			FTN_half_1_cos( 1.0f,time,    100,100,0,0,&result1[REB]);
-			FTN_half_1_cos(-1.0f,time,    400,100,0,0,&result2[REB]);
+
+			FTN_half_1_cos( 1.0f,time,    500,100,0,0,&result1[REB]);
+			FTN_half_1_cos(-1.0f,time,    800,100,0,0,&result2[REB]);
 			res[REB] = (float)(45.*(result1[REB] + result2[REB]));
-
-			/*
-			// RSP from 0 to 90 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    3,50,0,0,&result1[RSP]);
-			FTN_half_1_cos(-1.0f,time,    200,50,0,0,&result2[RSP]);
-			res[RSP] = (float)(90.*(result1[RSP]+result2[RSP]));
-
-
-			// REB from 0 to -20 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[REB]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[REB]);
-			res[REB] = (float)(-20.*(result1[REB]+result2[REB]));
-
-			// RSY from 0 to 35 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[RSY]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[RSY]);
-			res[RSY] = (float)(35.*(result1[RSY]+result2[RSY]));
-
-			// RSR from 0 to -10 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[RSR]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[RSR]);
-			res[RSR] = (float)(-10.*(result1[RSR]+result2[RSR]));
-
-			// RWY from 0 to -35 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[RWY]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[RWY]);
-			res[RWY] = (float)(-35.*(result1[RWY]+result2[RWY]));
-
-			// LEB from 0 to -20 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[LEB]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[LEB]);
-			res[LEB] = (float)(-20.*(result1[LEB]+result2[LEB]));
-
-			// LSY from 0 to 35 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[LSY]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[LSY]);
-			res[LSY] = (float)(35.*(result1[LSY]+result2[LSY]));
-
-			// LSR from 0 to 10 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[LSR]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[LSR]);
-			res[LSR] = (float)(10.*(result1[LSR]+result2[LSR]));
-
-			// LWY from 0 to 35 then back to 0 
-			FTN_half_1_cos( 1.0f,time,    25,40,0,0,&result1[LWY]);
-			FTN_half_1_cos(-1.0f,time,    200,40,0,0,&result2[LWY]);
-			res[LWY] = (float)(35.*(result1[LWY]+result2[LWY]));
 			*/
 
-			/*
+			FTN_half_1_cos( 1.0f,time,    100, 100,0,0,&result1[LEB]);
+			FTN_half_1_cos( 1.0f,time,    400, 100,0,0,&result2[LEB]);
+			FTN_half_1_cos(	1.0f,time,	  600, 100,0,0,&result3[LEB]);
+			res[LEB] = (float)(5.*(result1[LEB] + result2[LEB] + result3[LEB]));
 			
-			FTN_half_1_cos(-1.0f,time,    100,100,0,0,&result1[2]);
-			FTN_half_1_cos( 1.0f,time,    200,100,0,0,&result2[2]);
-			FTN_half_1_cos(-1.0f,time,    400,100,0,0,&result1[3]);
-			FTN_half_1_cos( 1.0f,time,    500,100,0,0,&result2[3]);
-			res[1] = (float)(90.*(result1[2]+result2[2]+result1[3]+result2[3]));
-				*/
+
 			///End of the user modified code ////////////////////////////////////////////
 
 			UpperMovement[RSP] = res[RSP];//(float)0.;	// R-Shoulder Pitch	
